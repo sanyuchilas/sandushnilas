@@ -1,0 +1,97 @@
+body {
+  overflow-x: hidden;
+
+  background: #1c1c1c;
+
+  padding: 0.5rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+:root {
+  --header-height: 7rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+
+  outline: none;
+  background: none;
+  border: none;
+
+  box-sizing: border-box;
+
+  color: #fff;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: var(--header-height);
+
+  gap: 0.5rem;
+}
+
+header * {
+  cursor: pointer;
+  font-size: calc(0.7 * var(--header-height));
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  height: calc(100% - var(--header-height));
+}
+
+nav {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-grow: 1;
+
+  font-size: 10rem;
+
+  width: 100%;
+}
+
+#projectivity-link {
+  flex-grow: 2;
+}
+
+#identity-link {
+  flex-grow: 1.5;
+}
+
+#contactivity-link {
+  flex-grow: 1;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  background: #1a1a1a;
+}
