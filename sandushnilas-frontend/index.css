@@ -36,6 +36,8 @@ header {
   justify-content: center;
   align-items: center;
 
+  flex-wrap: wrap;
+
   height: var(--header-height);
 
   gap: 0.5rem;
@@ -94,4 +96,16 @@ nav {
 .nav-link:hover {
   cursor: pointer;
   background: #1a1a1a;
+}
+
+.language-switcher {
+  white-space: nowrap;
+}
+
+.theme-switcher {
+  transform: scale(1, 1);
+}
+
+.mirror-x {
+  transform: scale(-1, 1) !important;
 }

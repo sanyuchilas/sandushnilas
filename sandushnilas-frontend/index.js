@@ -8,9 +8,11 @@ const projectivityLinkElement = document.getElementById('projectivity-link');
 const contactivityLinkElement = document.getElementById('contactivity-link');
 
 const languageSwitcherElement = document.getElementById('language-switcher');
+const themeSwitcherElement = document.getElementById('theme-switcher');
 
 window.addEventListener('resize', onWindowResize);
 languageSwitcherElement.addEventListener('click', onLanguageSwitcherClick);
+themeSwitcherElement.addEventListener('click', onThemeSwitcherClick);
 
 function renderText() {
   if (clientWidth < 1024) {
@@ -56,6 +58,10 @@ function onLanguageSwitcherClick() {
   }
 
   renderText();
+}
+
+function onThemeSwitcherClick() {
+  themeSwitcherElement.classList.toggle('mirror-x');
 }
 
 onWindowResize();
