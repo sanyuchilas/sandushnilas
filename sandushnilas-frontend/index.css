@@ -1,26 +1,42 @@
 body {
+  display: flex;
+  flex-direction: column;
+
   overflow-x: hidden;
 
-  background: #1c1c1c;
+  background: var(--background);
 
-  padding: 0.5rem;
+  padding: 0 var(--body-padding) var(--body-padding);
 }
 
 html,
 body {
   height: 100%;
+  font-size: 12px;
 }
 
 :root {
-  --header-height: 7rem;
+  --header-height: 8rem;
+  --body-padding: 0;
+
+  --text-color: #ececec;
+  --text-color-hover: var(--background);
+  --background: #1c1c1c;
+  --background-hover: var(--text-color);
+}
+
+.light {
+  --text-color: #1c1c1c;
+  --text-color-hover: var(--background);
+  --background: #ececec;
+  --background-hover: var(--text-color);
 }
 
 * {
   margin: 0;
   padding: 0;
 
-  font-size: 12px;
-  font-family: Arial, sans-serif;
+  font-family: Verdana, sans-serif;
 
   outline: none;
   background: none;
@@ -28,7 +44,8 @@ body {
 
   box-sizing: border-box;
 
-  color: #fff;
+  color: var(--text-color);
+  transition: all 0.15s ease-in-out;
 }
 
 header {
@@ -45,7 +62,7 @@ header {
 
 header * {
   cursor: pointer;
-  font-size: calc(0.7 * var(--header-height));
+  font-size: calc(0.5 * var(--header-height));
 }
 
 main {
@@ -53,9 +70,9 @@ main {
   flex-direction: column;
 
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
-  height: calc(100% - var(--header-height));
+  flex-grow: 1;
 }
 
 nav {
@@ -76,7 +93,7 @@ nav {
 
   flex-grow: 1;
 
-  font-size: 10rem;
+  font-size: 8rem;
 
   width: 100%;
 }
@@ -95,7 +112,8 @@ nav {
 
 .nav-link:hover {
   cursor: pointer;
-  background: #1a1a1a;
+  background: var(--background-hover);
+  color: var(--text-color-hover);
 }
 
 .language-switcher {
@@ -108,4 +126,41 @@ nav {
 
 .mirror-x {
   transform: scale(-1, 1) !important;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  html,
+  body {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 375px) {
+  html,
+  body {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  html,
+  body {
+    font-size: 7px;
+  }
 }

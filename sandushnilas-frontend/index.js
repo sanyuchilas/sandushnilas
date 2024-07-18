@@ -1,18 +1,18 @@
-import i11n from './i11n.js';
+import i11n from "./i11n.js";
 
-let currentLanguage = 'en';
+let currentLanguage = "en";
 let clientWidth = document.body.clientWidth;
 
-const indentityLinkElement = document.getElementById('identity-link');
-const projectivityLinkElement = document.getElementById('projectivity-link');
-const contactivityLinkElement = document.getElementById('contactivity-link');
+const indentityLinkElement = document.getElementById("identity-link");
+const projectivityLinkElement = document.getElementById("projectivity-link");
+const contactivityLinkElement = document.getElementById("contactivity-link");
 
-const languageSwitcherElement = document.getElementById('language-switcher');
-const themeSwitcherElement = document.getElementById('theme-switcher');
+const languageSwitcherElement = document.getElementById("language-switcher");
+const themeSwitcherElement = document.getElementById("theme-switcher");
 
-window.addEventListener('resize', onWindowResize);
-languageSwitcherElement.addEventListener('click', onLanguageSwitcherClick);
-themeSwitcherElement.addEventListener('click', onThemeSwitcherClick);
+window.addEventListener("resize", onWindowResize);
+languageSwitcherElement.addEventListener("click", onLanguageSwitcherClick);
+themeSwitcherElement.addEventListener("click", onThemeSwitcherClick);
 
 function renderText() {
   if (clientWidth < 1024) {
@@ -22,27 +22,27 @@ function renderText() {
   }
 
   languageSwitcherElement.textContent =
-    i11n[currentLanguage]['page-title-you-can'];
+    i11n[currentLanguage]["page-title-you-can"];
 
-  document.title = languageSwitcherElement.textContent + ' ' + '💕';
+  document.title = languageSwitcherElement.textContent + " " + "💕";
 }
 
 function renderShortText() {
   indentityLinkElement.textContent =
-    i11n[currentLanguage]['identity-link-short-text'];
+    i11n[currentLanguage]["identity-link-short-text"];
   projectivityLinkElement.textContent =
-    i11n[currentLanguage]['projectivity-link-short-text'];
+    i11n[currentLanguage]["projectivity-link-short-text"];
   contactivityLinkElement.textContent =
-    i11n[currentLanguage]['contactivity-link-short-text'];
+    i11n[currentLanguage]["contactivity-link-short-text"];
 }
 
 function renderLongText() {
   indentityLinkElement.textContent =
-    i11n[currentLanguage]['identity-link-long-text'];
+    i11n[currentLanguage]["identity-link-long-text"];
   projectivityLinkElement.textContent =
-    i11n[currentLanguage]['projectivity-link-long-text'];
+    i11n[currentLanguage]["projectivity-link-long-text"];
   contactivityLinkElement.textContent =
-    i11n[currentLanguage]['contactivity-link-long-text'];
+    i11n[currentLanguage]["contactivity-link-long-text"];
 }
 
 function onWindowResize() {
@@ -51,17 +51,18 @@ function onWindowResize() {
 }
 
 function onLanguageSwitcherClick() {
-  if (currentLanguage === 'en') {
-    currentLanguage = 'ru';
+  if (currentLanguage === "en") {
+    currentLanguage = "ru";
   } else {
-    currentLanguage = 'en';
+    currentLanguage = "en";
   }
 
   renderText();
 }
 
 function onThemeSwitcherClick() {
-  themeSwitcherElement.classList.toggle('mirror-x');
+  themeSwitcherElement.classList.toggle("mirror-x");
+  document.body.classList.toggle("light");
 }
 
 onWindowResize();
