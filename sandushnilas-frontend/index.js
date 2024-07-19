@@ -1,18 +1,38 @@
-import i11n from "./i11n.js";
+import i11n from './i11n.js';
 
-let currentLanguage = "en";
+let currentLanguage = 'en';
 let clientWidth = document.body.clientWidth;
 
-const indentityLinkElement = document.getElementById("identity-link");
-const projectivityLinkElement = document.getElementById("projectivity-link");
-const contactivityLinkElement = document.getElementById("contactivity-link");
+const indentityLinkElement = document.getElementById('identity-link');
+const projectivityLinkElement = document.getElementById('projectivity-link');
+const contactivityLinkElement = document.getElementById('contactivity-link');
 
-const languageSwitcherElement = document.getElementById("language-switcher");
-const themeSwitcherElement = document.getElementById("theme-switcher");
+const languageSwitcherElement = document.getElementById('language-switcher');
+const themeSwitcherElement = document.getElementById('theme-switcher');
 
-window.addEventListener("resize", onWindowResize);
-languageSwitcherElement.addEventListener("click", onLanguageSwitcherClick);
-themeSwitcherElement.addEventListener("click", onThemeSwitcherClick);
+const contactivityPageElement = document.getElementById('contactivity-page');
+const identityPageElement = document.getElementById('identity-page');
+const projectivityPageElement = document.getElementById('projectivity-page');
+const navPageElement = document.getElementById('nav-page');
+
+const pages = {
+  contactivity: contactivityPageElement,
+  identity: identityPageElement,
+  projectivity: projectivityPageElement,
+  nav: navPageElement,
+};
+
+window.addEventListener('resize', onWindowResize);
+window.addEventListener('popstate', onPopState);
+languageSwitcherElement.addEventListener('click', onLanguageSwitcherClick);
+themeSwitcherElement.addEventListener('click', onThemeSwitcherClick);
+
+for (const pageLinkElement of document.querySelectorAll('.nav-link')) {
+  pageLinkElement.addEventListener('click', onPageLinkClick);
+}
+
+onWindowResize();
+renderPage(getCurrentPage());
 
 function renderText() {
   if (clientWidth < 1024) {
@@ -22,27 +42,27 @@ function renderText() {
   }
 
   languageSwitcherElement.textContent =
-    i11n[currentLanguage]["page-title-you-can"];
+    i11n[currentLanguage]['page-title-you-can'];
 
-  document.title = languageSwitcherElement.textContent + " " + "💕";
+  document.title = languageSwitcherElement.textContent + ' ' + '💕';
 }
 
 function renderShortText() {
   indentityLinkElement.textContent =
-    i11n[currentLanguage]["identity-link-short-text"];
+    i11n[currentLanguage]['identity-link-short-text'];
   projectivityLinkElement.textContent =
-    i11n[currentLanguage]["projectivity-link-short-text"];
+    i11n[currentLanguage]['projectivity-link-short-text'];
   contactivityLinkElement.textContent =
-    i11n[currentLanguage]["contactivity-link-short-text"];
+    i11n[currentLanguage]['contactivity-link-short-text'];
 }
 
 function renderLongText() {
   indentityLinkElement.textContent =
-    i11n[currentLanguage]["identity-link-long-text"];
+    i11n[currentLanguage]['identity-link-long-text'];
   projectivityLinkElement.textContent =
-    i11n[currentLanguage]["projectivity-link-long-text"];
+    i11n[currentLanguage]['projectivity-link-long-text'];
   contactivityLinkElement.textContent =
-    i11n[currentLanguage]["contactivity-link-long-text"];
+    i11n[currentLanguage]['contactivity-link-long-text'];
 }
 
 function onWindowResize() {
@@ -51,18 +71,56 @@ function onWindowResize() {
 }
 
 function onLanguageSwitcherClick() {
-  if (currentLanguage === "en") {
-    currentLanguage = "ru";
+  if (currentLanguage === 'en') {
+    currentLanguage = 'ru';
   } else {
-    currentLanguage = "en";
+    currentLanguage = 'en';
   }
 
   renderText();
 }
 
 function onThemeSwitcherClick() {
-  themeSwitcherElement.classList.toggle("mirror-x");
-  document.body.classList.toggle("light");
+  themeSwitcherElement.classList.toggle('mirror-x');
+  document.body.classList.toggle('light');
 }
 
-onWindowResize();
+function renderPage(page) {
+  const url = new URL(window.location.href);
+  let isUpdated = false;
+
+  for (const [key, value] of Object.entries(pages)) {
+    if (key === page) {
+      value.classList.remove('hidden');
+      isUpdated = true;
+      continue;
+    }
+
+    value.classList.add('hidden');
+  }
+
+  if (!isUpdated) {
+    pages['nav'].classList.remove('hidden');
+    page = 'nav';
+  }
+
+  if (page === getCurrentPage()) {
+    return;
+  }
+
+  url.searchParams.set('page', page);
+
+  history.pushState({}, '', url);
+}
+
+function getCurrentPage() {
+  return new URL(window.location.href).searchParams.get('page') ?? 'nav';
+}
+
+function onPageLinkClick(event) {
+  renderPage(event.target.id.split('-')[0]);
+}
+
+function onPopState() {
+  renderPage(getCurrentPage());
+}
