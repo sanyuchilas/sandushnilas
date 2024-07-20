@@ -28,6 +28,7 @@ const pages = {
 
 window.addEventListener('resize', onWindowResize);
 window.addEventListener('popstate', onPopState);
+window.addEventListener('click', onWindowClick);
 
 languageSwitcherElement.addEventListener('click', onLanguageSwitcherClick);
 themeSwitcherElement.addEventListener('click', onThemeSwitcherClick);
@@ -148,4 +149,8 @@ function onPageLinkClick(event) {
 
 function onPopState() {
   renderPage(getCurrentPage());
+}
+
+function onWindowClick() {
+  videoElement.play();
 }
