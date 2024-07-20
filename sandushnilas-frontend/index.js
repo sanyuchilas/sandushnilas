@@ -2,6 +2,7 @@ import i11n from './i11n.js';
 
 let currentLanguage = 'en';
 let clientWidth = document.body.clientWidth;
+let titleOffset = 0;
 
 const indentityLinkElement = document.getElementById('identity-link');
 const projectivityLinkElement = document.getElementById('projectivity-link');
@@ -15,6 +16,9 @@ const identityPageElement = document.getElementById('identity-page');
 const projectivityPageElement = document.getElementById('projectivity-page');
 const navPageElement = document.getElementById('nav-page');
 
+const videoElement = document.getElementById('video');
+const headerElement = document.querySelector('header');
+
 const pages = {
   contactivity: contactivityPageElement,
   identity: identityPageElement,
@@ -24,10 +28,11 @@ const pages = {
 
 window.addEventListener('resize', onWindowResize);
 window.addEventListener('popstate', onPopState);
+
 languageSwitcherElement.addEventListener('click', onLanguageSwitcherClick);
 themeSwitcherElement.addEventListener('click', onThemeSwitcherClick);
 
-for (const pageLinkElement of document.querySelectorAll('.nav-link')) {
+for (const pageLinkElement of document.querySelectorAll('nav .nav-link')) {
   pageLinkElement.addEventListener('click', onPageLinkClick);
 }
 
@@ -41,8 +46,10 @@ function renderText() {
     renderLongText();
   }
 
+  const pageTitle = i11n[currentLanguage]['page-title'].split(',');
+
   languageSwitcherElement.textContent =
-    i11n[currentLanguage]['page-title-you-can'];
+    pageTitle[titleOffset % pageTitle.length];
 
   document.title = languageSwitcherElement.textContent + ' ' + '💕';
 }
@@ -77,6 +84,8 @@ function onLanguageSwitcherClick() {
     currentLanguage = 'en';
   }
 
+  titleOffset++;
+
   renderText();
 }
 
@@ -102,6 +111,22 @@ function renderPage(page) {
   if (!isUpdated) {
     pages['nav'].classList.remove('hidden');
     page = 'nav';
+  }
+
+  switch (page) {
+    case 'nav':
+    case 'identity':
+    case 'projectivity':
+      videoElement.classList.remove('hidden');
+      headerElement.classList.remove('box-shadow');
+      videoElement.src = 'nav.webm';
+      break;
+
+    case 'contactivity':
+      videoElement.pause();
+      videoElement.classList.add('hidden');
+      headerElement.classList.add('box-shadow');
+      break;
   }
 
   if (page === getCurrentPage()) {
