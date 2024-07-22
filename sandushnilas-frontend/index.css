@@ -241,6 +241,22 @@ button {
   background-color: var(--text-color);
 }
 
+#projectivity-page {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.year {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.project {
+  font-weight: 550;
+}
+
 @media (max-width: 1440px) {
   .contactivity-page {
     grid-template-columns: 1fr;
