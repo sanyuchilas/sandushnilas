@@ -121,12 +121,12 @@ function renderPage(page) {
     case "identity":
       videoElement.classList.remove("hidden");
       headerElement.classList.remove("box-shadow");
-      videoElement.src = "nav.webm";
+      // videoElement.src = "nav.webm";
       break;
 
     case "projectivity":
     case "contactivity":
-      videoElement.pause();
+      // videoElement.pause();
       videoElement.classList.add("hidden");
       headerElement.classList.add("box-shadow");
       break;
@@ -155,4 +155,5 @@ function onPopState() {
 
 function onWindowClick() {
   videoElement.play();
+  videoElement.muted = false;
 }
