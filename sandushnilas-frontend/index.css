@@ -253,6 +253,20 @@ a:hover {
   gap: 4rem;
 }
 
+#identity-page {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-start;
+}
+
+#identity-page .square {
+  width: 100%;
+  background: var(--text-color);
+
+  transform: rotateY(60deg) translateX(-700px);
+}
+
 .year {
   display: flex;
   flex-direction: column;
