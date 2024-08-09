@@ -43,7 +43,7 @@ body {
   margin: 0;
   padding: 0;
 
-  font-family: Verdana, sans-serif;
+  font-family: monospace, Verdana, sans-serif;
 
   outline: none;
   background: none;
@@ -121,8 +121,6 @@ nav {
 
   font-size: 8rem;
   font-weight: bold;
-
-  padding-bottom: 1rem;
 
   border-bottom: 1rem solid transparent;
 }
@@ -290,12 +288,11 @@ a:hover {
   width: 100%;
 
   column-gap: 2rem;
-  row-gap: 0.5rem;
+  row-gap: 1.5rem;
 }
 
 .project {
   font-weight: 500;
-  padding-bottom: 1rem;
 
   font-size: 4rem;
 
@@ -308,6 +305,7 @@ a:hover {
 
 .project:hover {
   border-bottom: 0.25rem solid var(--text-color);
+  transform: translateY(-0.5rem);
 }
 
 @media (max-width: 1440px) {
