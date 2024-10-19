@@ -258,17 +258,36 @@ a:hover {
   flex-direction: row;
 
   justify-content: flex-start;
-  height: 100%;
 }
 
 #identity-page .me {
-  min-height: 100px;
-  height: 50%;
+  width: 50%;
+  height: min-content;
 
   @media (max-width: 768px) {
-    max-width: 256px;
-    max-height: 256px;
+    width: 100%;
   }
+}
+
+#identity-page .post-with-image {
+  display: flex;
+  gap: 2rem;
+
+  font-size: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+#identity-page .post {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#identity-page .description {
+  text-align: justify;
 }
 
 .year {
