@@ -73,6 +73,40 @@ header {
   gap: 0.5rem;
 }
 
+@keyframes logo-ani {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  33% {
+    transform: rotate(10deg);
+  }
+
+  66% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+#logo {
+  position: absolute;
+
+  top: 3.5rem;
+  left: 3.5rem;
+
+  width: 1rem;
+  height: 1rem;
+
+  background: var(--text-color);
+}
+
+#logo:hover {
+  animation: logo-ani 1s infinite ease-in-out;
+}
+
 .box-shadow {
   box-shadow: 0 0 1rem 1rem var(--background);
 }
@@ -251,7 +285,7 @@ a:hover {
 }
 
 #identity-page {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 #identity-page .image {
@@ -271,6 +305,10 @@ a:hover {
   margin-top: 2rem;
 }
 
+#identity-page .post:hover {
+  transform: translateY(-0.5rem);
+}
+
 #identity-page .last-post {
   margin-top: 0;
 }
@@ -281,6 +319,16 @@ a:hover {
 
 #identity-page .description > * {
   margin: 1rem 0;
+  line-height: 1.375em;
+}
+
+#identity-page .description > *:hover {
+  transform: translateY(-0.5rem);
+}
+
+#identity-page .description > ul,
+ol {
+  padding-left: 5.5rem;
 }
 
 .year {
