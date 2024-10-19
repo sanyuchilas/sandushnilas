@@ -101,6 +101,8 @@ main {
   padding: 2rem 1rem 2rem 2rem;
 
   flex-grow: 1;
+
+  height: 100%;
 }
 
 nav {
@@ -256,13 +258,17 @@ a:hover {
   flex-direction: row;
 
   justify-content: flex-start;
+  height: 100%;
 }
 
-#identity-page .square {
-  width: 100%;
-  background: var(--text-color);
+#identity-page .me {
+  min-height: 100px;
+  height: 50%;
 
-  transform: rotateY(60deg) translateX(-700px);
+  @media (max-width: 768px) {
+    max-width: 256px;
+    max-height: 256px;
+  }
 }
 
 .year {
