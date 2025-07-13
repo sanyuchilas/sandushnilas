@@ -23,12 +23,12 @@
       })(
         window,
         document,
-        'script',
-        'https://mc.yandex.ru/metrika/tag.js',
-        'ym'
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js",
+        "ym"
       );
 
-      ym(103314673, 'init', {
+      ym(103314673, "init", {
         clickmap: true,
         trackLinks: true,
         accurateTrackBounce: true,
@@ -50,7 +50,7 @@
     <script defer src="./index.js" type="module"></script>
     <title>You can 💕</title>
   </head>
-  <body>
+  <body class="light">
     <header>
       <div id="logo"></div>
       <span id="language-switcher" class="language-switcher noselect"></span>
@@ -454,7 +454,54 @@
           связанные проекты
         </div>
       </div>
-      <div id="theBurden-page">Привет</div>
+      <div id="theBurden-page">
+        <div class="col-1">
+          <section style="height: 10%; min-height: 8.5rem">
+            <h1 class="section-header">Ссылки</h1>
+            <div
+              class="content"
+              style="
+                overflow-y: hidden;
+                overflow-x: auto;
+                max-width: 100%;
+                display: flex;
+                gap: 1rem;
+                padding-bottom: 1rem;
+              "
+            >
+              <a href="#">YouTube</a> | <a>Telegram</a> | <a>Yandex Music</a> |
+              <a>SoundCloud</a> | <a>Instagram</a> | <a>Twitter</a> |
+              <a>Apple Music</a>
+            </div>
+          </section>
+          <section style="height: 90%">
+            <h1 class="section-header">Описание</h1>
+            <div class="content">
+              <p>Бремя! Космос будет открыт и исследован.</p>
+              <br />
+              <p><u>Название:</u> бремя.</p>
+              <p><u>Момент начала:</u> июнь 2024.</p>
+              <p><u>Момент завершения:</u> июль 2025.</p>
+              <p><u>Дополнительно:</u> был реализован задел с июня 2022.</p>
+            </div>
+          </section>
+        </div>
+        <section>
+          <h1 class="section-header">Объяснение</h1>
+          <div class="content">
+            <p>
+              Сюжет 1: человек создает робота, который, в свою очередь, создает
+              этого человека.
+            </p>
+            <p>
+              Сюжет 2: поезд демонстрирует, что постоянно пытаешься выхватить
+              какой-то кусочек цельной картины, но цельную картину никак не
+              получается собрать, а как собрал, то оказывается, что собрал не ту
+              и не понимаешь, чего на самом деле хочешь.
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
     <video
       id="video"

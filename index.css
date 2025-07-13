@@ -44,7 +44,7 @@ body {
 
   font-family: monospace, Verdana, sans-serif;
 
-  outline: none;
+  /* outline: none; */
   background: none;
   border: none;
 
@@ -53,7 +53,6 @@ body {
   color: var(--text-color);
   transition: all 0.15s ease-in-out;
 
-  text-decoration: none;
   text-transform: none;
 
   cursor: default;
@@ -249,10 +248,12 @@ button {
 
 a {
   user-select: none;
+
+  text-decoration: none;
 }
 
 a:hover {
-  transform: translateY(-0.5rem);
+  transform: translateY(-0.25rem);
 }
 
 .icon * {
@@ -375,7 +376,36 @@ ol {
 }
 
 #theBurden-page {
+  display: flex;
+  gap: 2rem;
+
+  height: 100%;
+  max-height: 100%;
+
   font-size: 2rem;
+}
+
+#theBurden-page > * {
+  width: 50%;
+}
+
+#theBurden-page .col-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+#theBurden-page section .content {
+  max-height: calc(100% - 4rem);
+  overflow: auto;
+}
+
+#theBurden-page section .section-header {
+  height: 4rem;
+}
+
+.col-1 .content a {
+  white-space: nowrap;
+  text-decoration: underline;
 }
 
 @media (max-width: 1440px) {
@@ -404,6 +434,14 @@ ol {
   .icon {
     width: 16rem;
     height: 16rem;
+  }
+
+  #theBurden-page {
+    flex-direction: column;
+  }
+
+  #theBurden-page > * {
+    width: 100%;
   }
 }
 
