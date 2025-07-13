@@ -22,6 +22,8 @@ const theBurdenPageElement = document.getElementById("theBurden-page");
 const videoElement = document.getElementById("video");
 const headerElement = document.querySelector("header");
 
+const theBurdenProjectElement = document.getElementById("theBurden-project");
+
 const pages = {
   contactivity: contactivityPageElement,
   identity: identityPageElement,
@@ -43,6 +45,11 @@ logoComponent.addEventListener("click", onLogoClick);
 for (const pageLinkElement of document.querySelectorAll("nav .nav-link")) {
   pageLinkElement.addEventListener("click", onPageLinkClick);
 }
+
+theBurdenProjectElement.addEventListener(
+  "click",
+  onTheBurdenProjectElementClick
+);
 
 onWindowResize();
 renderPage(getCurrentPage());
@@ -163,4 +170,8 @@ function onWindowClick() {
 
 function onLogoClick() {
   renderPage();
+}
+
+function onTheBurdenProjectElementClick() {
+  renderPage("theBurden");
 }
