@@ -374,6 +374,10 @@ ol {
   transform: translateY(-0.5rem);
 }
 
+#theBurden-page {
+  font-size: 2rem;
+}
+
 @media (max-width: 1440px) {
   #contactivity-page {
     grid-template-columns: 1fr;

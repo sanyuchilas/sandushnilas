@@ -1,46 +1,47 @@
-import i11n from "./i11n.js";
+import i11n from './i11n.js';
 
-let currentLanguage = "en";
+let currentLanguage = 'en';
 let clientWidth = document.body.clientWidth;
 let titleOffset = 0;
 
-const logoComponent = document.getElementById("logo");
+const logoComponent = document.getElementById('logo');
 
-const indentityLinkElement = document.getElementById("identity-link");
-const projectivityLinkElement = document.getElementById("projectivity-link");
-const contactivityLinkElement = document.getElementById("contactivity-link");
+const indentityLinkElement = document.getElementById('identity-link');
+const projectivityLinkElement = document.getElementById('projectivity-link');
+const contactivityLinkElement = document.getElementById('contactivity-link');
 
-const languageSwitcherElement = document.getElementById("language-switcher");
-const themeSwitcherElement = document.getElementById("theme-switcher");
+const languageSwitcherElement = document.getElementById('language-switcher');
+const themeSwitcherElement = document.getElementById('theme-switcher');
 
-const contactivityPageElement = document.getElementById("contactivity-page");
-const identityPageElement = document.getElementById("identity-page");
-const projectivityPageElement = document.getElementById("projectivity-page");
-const navPageElement = document.getElementById("nav-page");
+const contactivityPageElement = document.getElementById('contactivity-page');
+const identityPageElement = document.getElementById('identity-page');
+const projectivityPageElement = document.getElementById('projectivity-page');
+const navPageElement = document.getElementById('nav-page');
+const theBurdenPageElement = document.getElementById('theBurden-page');
 
-const videoElement = document.getElementById("video");
-const headerElement = document.querySelector("header");
-const backgroundImageElement = document.getElementById("background-image");
+const videoElement = document.getElementById('video');
+const headerElement = document.querySelector('header');
 
 const pages = {
   contactivity: contactivityPageElement,
   identity: identityPageElement,
   projectivity: projectivityPageElement,
   nav: navPageElement,
+  theBurden: theBurdenPageElement,
 };
 
-window.addEventListener("resize", onWindowResize);
-window.addEventListener("popstate", onPopState);
-window.addEventListener("click", onWindowClick, {
+window.addEventListener('resize', onWindowResize);
+window.addEventListener('popstate', onPopState);
+window.addEventListener('click', onWindowClick, {
   once: true,
 });
 
-languageSwitcherElement.addEventListener("click", onLanguageSwitcherClick);
-themeSwitcherElement.addEventListener("click", onThemeSwitcherClick);
-logoComponent.addEventListener("click", onLogoClick);
+languageSwitcherElement.addEventListener('click', onLanguageSwitcherClick);
+themeSwitcherElement.addEventListener('click', onThemeSwitcherClick);
+logoComponent.addEventListener('click', onLogoClick);
 
-for (const pageLinkElement of document.querySelectorAll("nav .nav-link")) {
-  pageLinkElement.addEventListener("click", onPageLinkClick);
+for (const pageLinkElement of document.querySelectorAll('nav .nav-link')) {
+  pageLinkElement.addEventListener('click', onPageLinkClick);
 }
 
 onWindowResize();
@@ -53,30 +54,30 @@ function renderText() {
     renderLongText();
   }
 
-  const pageTitle = i11n[currentLanguage]["page-title"].split(",");
+  const pageTitle = i11n[currentLanguage]['page-title'].split(',');
 
   languageSwitcherElement.textContent =
     pageTitle[titleOffset % pageTitle.length];
 
-  document.title = languageSwitcherElement.textContent + " " + "💕";
+  document.title = languageSwitcherElement.textContent + ' ' + '💕';
 }
 
 function renderShortText() {
   indentityLinkElement.textContent =
-    i11n[currentLanguage]["identity-link-short-text"];
+    i11n[currentLanguage]['identity-link-short-text'];
   projectivityLinkElement.textContent =
-    i11n[currentLanguage]["projectivity-link-short-text"];
+    i11n[currentLanguage]['projectivity-link-short-text'];
   contactivityLinkElement.textContent =
-    i11n[currentLanguage]["contactivity-link-short-text"];
+    i11n[currentLanguage]['contactivity-link-short-text'];
 }
 
 function renderLongText() {
   indentityLinkElement.textContent =
-    i11n[currentLanguage]["identity-link-long-text"];
+    i11n[currentLanguage]['identity-link-long-text'];
   projectivityLinkElement.textContent =
-    i11n[currentLanguage]["projectivity-link-long-text"];
+    i11n[currentLanguage]['projectivity-link-long-text'];
   contactivityLinkElement.textContent =
-    i11n[currentLanguage]["contactivity-link-long-text"];
+    i11n[currentLanguage]['contactivity-link-long-text'];
 }
 
 function onWindowResize() {
@@ -85,10 +86,10 @@ function onWindowResize() {
 }
 
 function onLanguageSwitcherClick() {
-  if (currentLanguage === "en") {
-    currentLanguage = "ru";
+  if (currentLanguage === 'en') {
+    currentLanguage = 'ru';
   } else {
-    currentLanguage = "en";
+    currentLanguage = 'en';
   }
 
   titleOffset++;
@@ -97,8 +98,8 @@ function onLanguageSwitcherClick() {
 }
 
 function onThemeSwitcherClick() {
-  themeSwitcherElement.classList.toggle("mirror-x");
-  document.body.classList.toggle("light");
+  themeSwitcherElement.classList.toggle('mirror-x');
+  document.body.classList.toggle('light');
 }
 
 function renderPage(page) {
@@ -107,36 +108,30 @@ function renderPage(page) {
 
   for (const [key, value] of Object.entries(pages)) {
     if (key === page) {
-      value.classList.remove("hidden");
+      value.classList.remove('hidden');
       isUpdated = true;
       continue;
     }
 
-    value.classList.add("hidden");
+    value.classList.add('hidden');
   }
 
   if (!isUpdated) {
-    pages["nav"].classList.remove("hidden");
-    page = "nav";
+    pages['nav'].classList.remove('hidden');
+    page = 'nav';
   }
 
   switch (page) {
-    case "nav":
-      videoElement.classList.remove("hidden");
-      headerElement.classList.remove("box-shadow");
+    case 'nav':
+      videoElement.classList.remove('hidden');
+      headerElement.classList.remove('box-shadow');
       // videoElement.src = "nav.webm";
       break;
 
-    case "projectivity":
-    case "contactivity":
+    default:
       // videoElement.pause();
-      videoElement.classList.add("hidden");
-      headerElement.classList.add("box-shadow");
-      break;
-
-    case "identity":
-      videoElement.classList.add("hidden");
-      headerElement.classList.remove("box-shadow");
+      videoElement.classList.add('hidden');
+      headerElement.classList.add('box-shadow');
       break;
   }
 
@@ -144,17 +139,17 @@ function renderPage(page) {
     return;
   }
 
-  url.searchParams.set("page", page);
+  url.searchParams.set('page', page);
 
-  history.pushState({}, "", url);
+  history.pushState({}, '', url);
 }
 
 function getCurrentPage() {
-  return new URL(window.location.href).searchParams.get("page") ?? "nav";
+  return new URL(window.location.href).searchParams.get('page') ?? 'nav';
 }
 
 function onPageLinkClick(event) {
-  renderPage(event.target.id.split("-")[0]);
+  renderPage(event.target.id.split('-')[0]);
 }
 
 function onPopState() {
